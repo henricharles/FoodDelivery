@@ -8,3 +8,4 @@ import domain.Store;
 public interface CategoryDao extends JpaRepository<Category,Integer>{
 
 }
+
