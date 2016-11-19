@@ -3,9 +3,11 @@ package domain;
 import javax.persistence.*;
 
 @Entity
-public class DeleveryPerson extends Person{
+public class DeliveryPerson extends Person{
 	private String area;
 	private boolean availability;
+	@OneToOne(cascade=CascadeType.ALL)
+	private Schedule schedule;
 	public String getArea() {
 		return area;
 	}
