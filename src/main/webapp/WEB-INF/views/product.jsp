@@ -18,6 +18,8 @@
 		<th>Description</th>
 		<th>Price</th>
 		<th>Photo</th>
+		<th></th>
+		<th></th>
 		</tr>
 
 		<c:forEach var="element" items="${product}">
@@ -28,6 +30,7 @@
 			<td>${element.price }</td>
 			<td>${element.photo}</td>
 			
+			<td>
 			<form action="Delete" method="post">
 			<input style="border-radius:2px" type="hidden" name="productNumber" value="${element.id}">
  			<input type ="submit" value="Delete">

@@ -39,6 +39,11 @@
 		</tr>
 		
 		<tr>
+		<td>Photo</td>
+		<td><form:input type="file" path="photo" /> </td>
+		</tr>
+		
+		<tr>
 		<td></td><td><input type="submit" value="${Val}"></td>
 		</tr>
 	</table>

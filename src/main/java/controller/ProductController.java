@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import domain.Category;
 import domain.Product;
 import service.ProductImpl;
 
@@ -39,8 +40,8 @@ public class ProductController {
 		val = "Update";
 		model.addAttribute("Val", val);
 
-		prodHand.GetSingleProduct(id);
-		//model.put("product", P);
+		Product P = prodHand.GetSingleProduct(id);
+		model.put("product", P);
 
 		return "AddProducts";
 	}
@@ -58,7 +59,6 @@ public class ProductController {
 	@RequestMapping(value = "/AddProduct", method = RequestMethod.POST)
 	// here, we get object of Product because we have used CommandName in jsp
 	public String AddProduct(Product p, ModelMap model) {
-
 		if (val.equals("Add")) {
 			prodHand.AddProduct(p);
 		}
@@ -70,12 +70,11 @@ public class ProductController {
 	}
 
 	@ModelAttribute("categories")
-	public List<String> getCategories() {
-		List<String> catList = new ArrayList<String>();
-		catList.add("Vegetables");
-		catList.add("Fruits");
-		catList.add("Cereals");
-		catList.add("Local Product");
+	public List<Category> getCategories() {
+		
+		List<Category> catList = new ArrayList<Category>();
+		catList = prodHand.GetCategory();
+		
 		return catList;
 	}
 
