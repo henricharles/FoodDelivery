@@ -13,11 +13,12 @@ private String street;
 public String getStreet() {
 	return street;
 }
+
 public void setStreet(String street) {
 	this.street = street;
 }
 public Address(){
-	
+	//xcxcx
 }
 public String getCity() {
 	return city;

@@ -11,6 +11,7 @@ import configuration.MvcConfigure;
 import dao.ProductDao;
 import domain.Product;
 import service.ProductService;
+
 @Controller
 public class Main {
 	@Autowired
@@ -23,14 +24,10 @@ public class Main {
 //		p.setDescription("this is product p");
 		
 	
-	@RequestMapping(value="/hello1",method = RequestMethod.GET)
-	@ResponseBody
+	@RequestMapping("/prod")
 	public String t()
 	{
-		p.setName("Shampoo");
-		p.setPrice(300.33);
-		productService.saveProduct(p);
-		return "hellooooo";
+		return "product";
 		
 	}
 	

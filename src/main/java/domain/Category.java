@@ -2,7 +2,6 @@ package domain;
 
 import javax.persistence.*;
 
-
 @Entity
 public class Category {
 	@Id @GeneratedValue
