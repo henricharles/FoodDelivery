@@ -1,6 +1,8 @@
 package domain;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.*;
 
@@ -8,9 +10,18 @@ import javax.persistence.*;
 public class Schedule {
 	@Id @GeneratedValue
 	private int id;
+	
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date date;
+	
 	private String area;
+	
+	@OneToMany(cascade=CascadeType.ALL,mappedBy="schedule")
+	private List<Order> order=new ArrayList<>();
+	
+	@OneToOne(cascade=CascadeType.ALL,mappedBy="schedule")
+	private DeliveryPerson deliveryPerson;
+	
 	public int getId() {
 		return id;
 	}

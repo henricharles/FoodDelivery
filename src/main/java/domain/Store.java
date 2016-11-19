@@ -1,5 +1,7 @@
 package domain;
 
+import java.util.List;
+
 import javax.persistence.*;
 
 @Entity
@@ -9,6 +11,14 @@ public class Store {
 	private String name;
 	@Embedded
 	private Address address;
+	@OneToMany(cascade=CascadeType.ALL,mappedBy="store")
+	private List<Product> product;
+	public List<Product> getProduct() {
+		return product;
+	}
+	public void setProduct(List<Product> product) {
+		this.product = product;
+	}
 	public int getId() {
 		return id;
 	}
