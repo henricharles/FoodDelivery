@@ -1,6 +1,7 @@
 package domain;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -11,6 +12,9 @@ public class Customer extends Person {
 	private String username;
 	private String password;
 	
+	@OneToMany(cascade=CascadeType.ALL,mappedBy="customer")
+	private List<Order> orders=new ArrayList<>();
+
 	public Customer(){
 		
 	}

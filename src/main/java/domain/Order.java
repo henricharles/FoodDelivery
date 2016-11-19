@@ -1,6 +1,8 @@
 package domain;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.*;
 
@@ -8,11 +10,29 @@ import javax.persistence.*;
 public class Order {
 	@Id @GeneratedValue
 	private int id;
+	
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date orderDate;
+	
 	@Enumerated(EnumType.STRING)
 	private OrderStatus status;
+	
 	private int amount;
+	@OneToMany(cascade=CascadeType.ALL,mappedBy="order")
+	private List<Product> product=new ArrayList<>();
+	
+	@ManyToOne(cascade=CascadeType.ALL)
+	private Customer customer;
+	
+	@ManyToOne(cascade=CascadeType.ALL)
+	private Schedule schedule;
+	
+	public List<Product> getProduct() {
+		return product;
+	}
+	public void setProduct(List<Product> product) {
+		this.product = product;
+	}
 	public int getId() {
 		return id;
 	}
