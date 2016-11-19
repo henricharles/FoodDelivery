@@ -30,7 +30,7 @@ import org.springframework.web.servlet.view.JstlView;
 @EnableTransactionManagement
 public class MvcConfigure extends WebMvcConfigurerAdapter {
 	private static final String PROPERTY_NAME_DATABASE_DRIVER = "com.mysql.jdbc.Driver";
-	private static final String PROPERTY_NAME_DATABASE_PASSWORD = "";
+	private static final String PROPERTY_NAME_DATABASE_PASSWORD = "root";
 	private static final String PROPERTY_NAME_DATABASE_URL = "jdbc:mysql://localhost/foodDB?createDatabaseIfNotExist=true";
 	private static final String PROPERTY_NAME_DATABASE_USERNAME = "root";
 
