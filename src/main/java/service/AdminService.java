@@ -7,5 +7,7 @@ import domain.Store;
 
 public interface AdminService {
 	public void createStore(Store store);
+	public void scheduledelivery();
+
 
 }

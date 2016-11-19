@@ -15,11 +15,19 @@ import domain.Store;
 public class AdminServiceImpl implements AdminService{
 	@Autowired
 	private StoreDao storeDao;
+	
 
 	@Override
 	public void createStore(Store store) {
 		// TODO Auto-generated method stub
 		storeDao.save(store);
+	}
+
+
+	@Override
+	public void scheduledelivery() {
+		// TODO Auto-generated method stub
+		
 	}
 		
 
