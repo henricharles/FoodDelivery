@@ -15,7 +15,7 @@ public class Category {
 	
 	private String image;
 	
-	@OneToMany(cascade=CascadeType.PERSIST,mappedBy="category")
+	@OneToMany(mappedBy="category")
 	private List<Product> product=new ArrayList<>();
 	public String getImage() {
 		return image;

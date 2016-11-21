@@ -52,12 +52,14 @@ public class ProductController {
 
 		val = "Add";
 		model.addAttribute("Val", val);
+	    model.addAttribute("categories", getCategories());
+		
 
 		model.put("product", new Product());
 		return "AddProducts";
 	}
 
-	@Transactional
+	
 	@RequestMapping(value = "/AddProduct", method = RequestMethod.POST)
 	public String AddProduct(Product p, ModelMap model) {
 		if (val.equals("Add")) {
@@ -71,12 +73,12 @@ public class ProductController {
 		return "product";
 	}
 	
-	@ModelAttribute("categories")
+	@Transactional
+	//@ModelAttribute("categories")
 	public List<Category> getCategories() {
 		
 		List<Category> catList = new ArrayList<Category>();
 		catList = prodHand.GetCategory();
-		
 		return catList;
 	}
 	
