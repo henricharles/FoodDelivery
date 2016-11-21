@@ -11,7 +11,6 @@ import dao.ProductDao;
 import domain.Category;
 import domain.Product;
 
-
 @Service
 public class ProductImpl implements ProductService{
 	@Autowired
@@ -31,13 +30,21 @@ public class ProductImpl implements ProductService{
 	}
 	
 	public void DeleteProduct(int id){
-		productDao.delete(id);
+		try{
+			productDao.delete(id);
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
 	}
 	
 	public void AddProduct(Product p){
 		productDao.save(p);
 	}
 	
+	/*public void UploadFile(UploadItem uploadItem){
+		
+	}*/
 	public Product GetSingleProduct(int id){
 		return productDao.getOne(id);
 	}
@@ -46,6 +53,10 @@ public class ProductImpl implements ProductService{
 		productDao.save(p);
 	}
 	public List<Category> GetCategory(){
-		return CatDAO.findAll();
+		return CatDAO.findAll();		
+	}
+
+	public Category GetCategoryById(int id) {
+		return CatDAO.findOne(id);
 	}
 }
