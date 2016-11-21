@@ -21,7 +21,7 @@ public class ProductController {
 	private ProductImpl prodHand;
 	String val = ""; 
 
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = "/product", method = RequestMethod.GET)
 	public String PageLoad(ModelMap model) {
 		model.addAttribute("product", prodHand.getAllProduct());
 		return "product";

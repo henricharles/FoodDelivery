@@ -27,14 +27,20 @@
 <body>
 	<div class="content">
 		<h2>${product.name}</h2>
-		<div class="pic">
+		<%-- <div class="pic">
 			<img alt="${product.image}" src="images/${product.image}">
-		</div>
+		</div> --%>
 		<div class="product-detail">
 			<ul>
 				<li><p>${product.description}</p></li>
 				<li><p>${product.price}</p></li>
 			</ul>
+		</div>
+		
+		<div class="order-button">
+			<form action="order/${product.id}" method="get">
+				<input type="submit" value="Add Cart"/>
+			</form>
 		</div>
 	</div>
 </body>

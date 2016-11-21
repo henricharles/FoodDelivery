@@ -23,7 +23,7 @@ import service.CategoryService;
 import service.ProductService;
 
 @Controller
-public class Main {
+public class MainController{
 	@Autowired
 	ProductService productService;
 	
@@ -32,11 +32,6 @@ public class Main {
 	
 	@Autowired
 	AdminService adminService;
-//	public static void main(String args[]){
-//		//AnnotationConfigApplicationContext context=new AnnotationConfigApplicationContext(MvcConfigure.class);
-//		Main m=new Main();
-	
-//		p.setDescription("this is product p");
 		
 	@Transactional
 	@RequestMapping("/index")
@@ -45,7 +40,6 @@ public class Main {
 		model.addAttribute("categories",categoryService.getAll());
 		System.out.println(categoryService.getAll().get(0).getProduct());
 		return "index";
-		
 	}
 	
 	@Transactional
@@ -57,5 +51,16 @@ public class Main {
 		return "productView";
 	}
 	
-	
+	@Transactional
+	@RequestMapping(value="productList/productDetail/{id}",method=RequestMethod.GET)
+	public String productDetail(@PathVariable int id,Model model){
+		System.out.println("productDetail");
+		model.addAttribute("product",productService.GetSingleProduct(id));
+		System.out.println(productService.GetSingleProduct(id));
+		return "productDetail";
+	}
+	@RequestMapping(value="order/${id}",method=RequestMethod.GET)
+	/*public String order(@PathVariable int id,Model model){
+		
+	}*/
 }

@@ -37,7 +37,9 @@
 				<li>
 					<ul>
 						<%-- <li><a href="productList/${product.id}"><img src="images/${product.image}"/></a></li> --%>
-						<li><a href="productList/${product.id}">${product.name}</a></li>
+						<li>
+							<a href="productDetail/${product.id}">${product.name}</a>
+						</li>
 						<li>${product.price}</li>
 					</ul>
 				</li>
