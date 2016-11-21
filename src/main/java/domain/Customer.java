@@ -12,8 +12,8 @@ public class Customer extends Person {
 	private String username;
 	private String password;
 	
-	@OneToMany(cascade=CascadeType.ALL,mappedBy="customer")
-	private List<Order> orders=new ArrayList<>();
+	/*@OneToMany(cascade=CascadeType.ALL,mappedBy="customer")
+	private List<Order> orders=new ArrayList<>();*/
 
 	public Customer(){
 		

@@ -68,6 +68,7 @@ public class MvcConfigure extends WebMvcConfigurerAdapter {
 		properties.put("hibernate.show_sql", PROPERTY_NAME_HIBERNATE_SHOW_SQL);
 		properties.put("hibernate.hbm2ddl.auto", PROPERTY_NAME_HIBERNATE_HBM2DDL_AUTO);
 		properties.put("connection.pool.size", PROPERTY_NAME_HIBERNATE_CONNECTION_POOL_SIZE);
+		properties.put("current_session_context_class", "thread");
 
 		return properties;
 	}

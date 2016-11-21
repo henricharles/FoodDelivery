@@ -7,6 +7,7 @@ import java.util.List;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "Order_1")
 public class Order {
 	@Id @GeneratedValue
 	private int id;
@@ -18,8 +19,9 @@ public class Order {
 	private OrderStatus status;
 	
 	private int amount;
-	@OneToMany(cascade=CascadeType.ALL,mappedBy="order")
+	@OneToMany(cascade=CascadeType.PERSIST,mappedBy="order")
 	private List<Product> product=new ArrayList<>();
+
 	
 	@ManyToOne(cascade=CascadeType.ALL)
 	private Customer customer;

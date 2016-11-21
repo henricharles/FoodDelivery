@@ -19,16 +19,16 @@ public class ProductController {
 	@Autowired
 	private ProductImpl prodHand;
 	String val = ""; 
-
+/*
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String PageLoad(ModelMap model) {
 		model.addAttribute("product", prodHand.getAllProduct());
 		return "product";
 	}
-
+*/
 	@RequestMapping(value = "/Delete", method = RequestMethod.POST)
 	public String DeleteProduct(@RequestParam("productNumber") int id, ModelMap model) {
-
+		
 		prodHand.DeleteProduct(id);
 		model.addAttribute("product", prodHand.getAllProduct());
 		return "product";
@@ -69,13 +69,17 @@ public class ProductController {
 		return "product";
 	}
 
-	@ModelAttribute("categories")
-	public List<Category> getCategories() {
+	/*@ModelAttribute("categor")
+	public List<String> getCategories() {
 		
 		List<Category> catList = new ArrayList<Category>();
 		catList = prodHand.GetCategory();
-		
+		List<String> catList = new ArrayList<String>();
+		catList.add("one");
+		catList.add("two");
+		catList.add("three");
+		catList.add("four");
 		return catList;
-	}
+	}*/
 
 }

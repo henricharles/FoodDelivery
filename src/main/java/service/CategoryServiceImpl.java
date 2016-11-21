@@ -4,10 +4,12 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import dao.CategoryDao;
 import domain.Category;
 @Service
+@Transactional
 public class CategoryServiceImpl implements CategoryService{
 	@Autowired
 	CategoryDao categoryDao;
@@ -16,30 +18,30 @@ public class CategoryServiceImpl implements CategoryService{
 	@Override
 	public void createCategory(Category category) {
 		categoryDao.save(category);
+	
 	}
 
 	@Override
 	public List<Category> getAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return categoryDao.findAll();
 	}
 
 	@Override
 	public Category find(int id) {
 		// TODO Auto-generated method stub
-		return null;
+		return categoryDao.findOne(id);
 	}
 
 	@Override
-	public boolean delete(Category category) {
+	public void delete(int id) {
 		// TODO Auto-generated method stub
-		return false;
+		categoryDao.delete(id);
 	}
-
 	@Override
-	public boolean update(Category category) {
+	public void update(Category category) {
 		// TODO Auto-generated method stub
-		return false;
+		System.out.println(category);
+		categoryDao.save(category);
 	}
 	
 }

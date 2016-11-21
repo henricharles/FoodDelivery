@@ -8,6 +8,6 @@ public interface CategoryService {
 	public void createCategory(Category category);
 	public List<Category> getAll();
 	public Category find(int id);
-	public boolean delete(Category category);
-	public boolean update(Category category); 
+	public void delete(int id);
+	public void update(Category category); 
  }

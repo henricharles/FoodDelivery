@@ -7,11 +7,12 @@
 <title>Category</title>
 </head>
 <body>
-	<form action="addCategory" method="post">
+ 
+	<form action="categories" method="post"  enctype="multipart/form-data">
 		<table>
 			<tr>
 			<td>Category Name:</td>
-			<td><input type="text" name="name" /> </td>
+			<td><input type="text" name="categoryName" /> </td>
 		</tr>
 		<tr>
 			<td>Choose Image:</td>

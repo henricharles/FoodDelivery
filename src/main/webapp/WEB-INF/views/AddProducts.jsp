@@ -36,7 +36,7 @@
 		
 		<tr>
 		<td>Category</td>
-		<td><form:select path="category" items="${categories}" multiple="false" /> </td>
+		<td><form:select path="category" items="${categor}" multiple="false" /> </td>
 		</tr>
 		
 		<tr>

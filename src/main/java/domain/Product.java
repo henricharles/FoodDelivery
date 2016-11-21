@@ -10,13 +10,13 @@ public class Product {
 	
 	private String description;
 	
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne(cascade=CascadeType.PERSIST)
 	private Store store;
 	
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne
 	private Category category;
 	
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne(cascade=CascadeType.PERSIST)
 	private Order order;
 	
 	public Category getCategory() {

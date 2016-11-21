@@ -16,8 +16,8 @@ public class Schedule {
 	
 	private String area;
 	
-	@OneToMany(cascade=CascadeType.ALL,mappedBy="schedule")
-	private List<Order> order=new ArrayList<>();
+	/*@OneToMany(cascade=CascadeType.ALL,mappedBy="schedule")
+	private List<Order> order=new ArrayList<>();*/
 	
 	@OneToOne(cascade=CascadeType.ALL,mappedBy="schedule")
 	private DeliveryPerson deliveryPerson;

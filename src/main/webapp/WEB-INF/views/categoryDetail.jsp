@@ -3,30 +3,28 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Add a Car</title>
+<style type="text/css">
+		img{
+			max-width:100px;
+		}
+		
+	</style>
 </head>
 <body>
-	<form action="../cars/${car.id}" method="post">
+	<form action="../categories/${category.id}" method="post">
 	<table>
 		<tr>
-			<td>Make:</td>
-			<td><input type="text" name="make" value="${car.make}" /> </td>
+			<td>Name:</td>
+			<td><input type="text" name="name" value="${category.name}" /> </td>
 		</tr>
 		<tr>
-			<td>Model:</td>
-			<td><input type="text" name="model" value="${car.model}" /> </td>
-		</tr>
-		<tr>
-			<td>Year:</td>
-			<td><input type="text" name="year" value="${car.year}" /> </td>
-		</tr>
-		<tr>
-			<td>Color:</td>
-			<td><input type="text" name="color" value="${car.color}" /> </td>
+			<td>Image:</td>
+			<td><img src="../images/${category.image}"/></td>
 		</tr>
 	</table>
 	<input type="submit" value="update"/>
 	</form>
-	<form action="delete?carId=${car.id}" method="post">
+	<form action="delete?id=${category.id}" method="post">
 		<button type="submit">Delete</button>
 	</form>
 </body>

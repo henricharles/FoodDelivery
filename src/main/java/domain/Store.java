@@ -11,7 +11,7 @@ public class Store {
 	private String name;
 	@Embedded
 	private Address address;
-	@OneToMany(cascade=CascadeType.ALL,mappedBy="store")
+	@OneToMany(cascade=CascadeType.PERSIST,mappedBy="store")
 	private List<Product> product;
 	public List<Product> getProduct() {
 		return product;
