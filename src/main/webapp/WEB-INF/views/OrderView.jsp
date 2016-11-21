@@ -24,8 +24,8 @@
 	<table>
 	<tr>
 		<td>${order.amount}</td>
-		<td>${OrderDate}</td>
-		<td>${Status}</td>
+		<td>${order.orderDate}</td>
+		<td>${order.status}</td>
 	</tr>
 	</table>
 </body>
