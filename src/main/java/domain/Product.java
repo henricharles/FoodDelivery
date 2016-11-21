@@ -1,5 +1,7 @@
 package domain;
 
+import java.sql.Blob;
+
 import javax.persistence.*;
 @Entity
 public class Product {
@@ -10,13 +12,13 @@ public class Product {
 	
 	private String description;
 	
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne(cascade=CascadeType.PERSIST)
 	private Store store;
 	
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne(cascade=CascadeType.PERSIST)
 	private Category category;
 	
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne(cascade=CascadeType.PERSIST)
 	private Order order;
 	
 	public Category getCategory() {
@@ -49,7 +51,8 @@ public class Product {
 		this.description = description;
 	}
 	@Lob
-	private byte[] photo;
+	private Blob photo;
+	
 	public int getId() {
 		return id;
 	}
@@ -63,10 +66,10 @@ public class Product {
 	public void setPrice(double price) {
 		this.price = price;
 	}
-	public byte[] getPhoto() {
+	public Blob getPhoto() {
 		return photo;
 	}
-	public void setPhoto(byte[] photo) {
+	public void setPhoto(Blob photo) {
 		this.photo = photo;
 	}
 

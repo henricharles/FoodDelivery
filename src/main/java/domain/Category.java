@@ -13,7 +13,7 @@ public class Category {
 	public int getId() {
 		return id;
 	}
-	@OneToMany(cascade=CascadeType.ALL,mappedBy="category")
+	@OneToMany(cascade=CascadeType.PERSIST,mappedBy="category")
 	private List<Product> product=new ArrayList<>();
 	public void setId(int id) {
 		this.id = id;
