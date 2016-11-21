@@ -60,7 +60,7 @@ public class MainController{
 		return "productDetail";
 	}
 	@RequestMapping(value="order/${id}",method=RequestMethod.GET)
-	/*public String order(@PathVariable int id,Model model){
+	public String order(@PathVariable int id,Model model){
 		
-	}*/
+	}
 }
