@@ -20,7 +20,7 @@
 	<c:forEach var="category" items="${categories}">
 	<tr>
 		<td>${category.name}</td>
-		<td><img src="/foodDelivery/image/${category.id}"/></td>
+		<td><img src="/foodDelivery/images/${category.id}"/></td>
 		<td><a href="categories/${category.id}">Detail</a></td>
 	</tr>
 	

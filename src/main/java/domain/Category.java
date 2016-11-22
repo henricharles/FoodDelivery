@@ -17,10 +17,8 @@ public class Category {
 	private int id;
 	
 	@NotBlank(message="Name is required")
-	@Size(min=6, max=50, message="Name must be between 6-50 characters.")
 	private String name;
 	
-	@NotEmpty(message="File is required")
 	@Lob
 	private byte[] image;
 	
@@ -65,3 +63,4 @@ public class Category {
 	}
 
 }
+

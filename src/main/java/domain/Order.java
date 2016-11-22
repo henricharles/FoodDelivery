@@ -1,3 +1,4 @@
+
 package domain;
 
 import java.util.ArrayList;
@@ -19,11 +20,11 @@ public class Order {
 	private OrderStatus status;
 	
 	private int amount;
-	@OneToMany
+	
+	@OneToMany(fetch = FetchType.EAGER)
 	@JoinColumn(name="order_id")
 	private List<Product> product=new ArrayList<>();
 
-	
 	@ManyToOne(cascade=CascadeType.ALL)
 	private Customer customer;
 	

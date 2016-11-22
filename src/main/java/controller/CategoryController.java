@@ -75,8 +75,11 @@ public class CategoryController{
 	@RequestMapping(value = "/categories", method = RequestMethod.POST)
 	public String addCategoryy(@Valid @ModelAttribute("category")Category category,  BindingResult result, ModelMap model, @RequestParam MultipartFile image) throws IOException{
 		if(result.hasErrors()){
+			System.out.println(result.getAllErrors());
 			return "addCategory";
+			
 		}
+		System.out.println(category.getName()+"=========="+result.toString());
 		if(image!=null)
 			category.setImage(image.getBytes());
 		categoryService.createCategory(category);
@@ -85,7 +88,7 @@ public class CategoryController{
 	}
 	
 	@Transactional
-	@RequestMapping(value ="/image/{id}", method = RequestMethod.GET)
+	@RequestMapping(value ="/images/{id}", method = RequestMethod.GET)
 	public void getImageForProduct(Model model, @PathVariable("id") int id, HttpServletResponse response,HttpServletRequest request) 
 	          throws ServletException, IOException {
 		

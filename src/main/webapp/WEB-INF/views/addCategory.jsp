@@ -20,7 +20,6 @@
 			<td>Choose Image:</td>
 			<td><form:input type="file" path="image"/> </td>
 			
-			
 		</tr>
 		<tr colspan="2">
 			<td><input type="submit" value="save" /></td>

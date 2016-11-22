@@ -40,13 +40,6 @@ public class OrderController {
 	@Autowired
 	ProductService productService;
 	
-	@RequestMapping(value = "/OrderView/{CustomerID}", method = RequestMethod.GET)
-	public String PageLoad(@PathVariable("CustomerID") int CustId, ModelMap model) {
-		
-		model.addAttribute("order", orderHandl.getOrderByID(CustId));
-		return "OrderView";
-	}
-	
 	@Transactional
 	@RequestMapping(value="productList/productDetail/order/{id}",method=RequestMethod.POST)
 	public String order(@PathVariable int id, @ModelAttribute("shoppingList") List<Product> productList,Model model){
@@ -85,6 +78,20 @@ public class OrderController {
 		orderHandl.save(order);
 		return "redirect:/cart";
 		
+	}
+	
+	@Transactional
+	@RequestMapping(value = "/OrderView/{CustomerID}", method = RequestMethod.GET)
+	public String OrderView(@PathVariable("CustomerID") int CustId, ModelMap model) {
+	
+		List<Order> OrderList = orderHandl.getOrderByID(1);
+		int totalAmount = 0;
+		for(Order o: OrderList){
+			totalAmount += o.getAmount();
+		}
+		model.addAttribute("order", OrderList);
+		model.addAttribute("TotalOrderAmt", totalAmount);
+		return "OrderView";
 	}
 	
 	

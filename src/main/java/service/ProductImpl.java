@@ -46,7 +46,7 @@ public class ProductImpl implements ProductService{
 		
 	}*/
 	public Product GetSingleProduct(int id){
-		return productDao.getOne(id);
+		return productDao.findOne(id);
 	}
 	
 	public void UpdateProduct(Product p){

@@ -5,7 +5,6 @@
 	<artifactId>foodDelivery</artifactId>
 	<version>0.0.1</version>
 	<packaging>war</packaging>
-
 	<properties>
 		<spring.version>4.1.6.RELEASE</spring.version>
 		<spring.security.version>4.0.1.RELEASE</spring.security.version>
@@ -176,4 +175,5 @@
 		</pluginManagement>
 		<!-- <finalName>test</finalName> -->
 	</build>
+
 </project>
