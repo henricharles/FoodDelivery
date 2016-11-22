@@ -1,5 +1,11 @@
 package service;
 
-public class ScheduleServiceImp {
+import org.springframework.stereotype.Service;
+
+@Service
+public class ScheduleServiceImp implements ScheduleService {
+	
+	
+	
 
 }

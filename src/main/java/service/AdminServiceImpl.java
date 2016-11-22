@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import dao.ProductDao;
+import dao.ScheduleDao;
 import dao.StoreDao;
 import domain.Product;
 import domain.Store;
@@ -15,6 +16,10 @@ import domain.Store;
 public class AdminServiceImpl implements AdminService{
 	@Autowired
 	private StoreDao storeDao;
+	//creating a Schelude Object for delivery
+	@Autowired
+	private ScheduleDao scheludedao;
+	
 	
 
 	@Override
@@ -26,7 +31,9 @@ public class AdminServiceImpl implements AdminService{
 
 	@Override
 	public void scheduledelivery() {
-		// TODO Auto-generated method stub
+		// TODO Auto-generated method stub         
+		//scheludedao.save(arg0)
+		
 		
 	}
 		

@@ -13,12 +13,22 @@ private String street;
 public String getStreet() {
 	return street;
 }
+
 public void setStreet(String street) {
 	this.street = street;
 }
 public Address(){
-	
+	//xcxcx
 }
+public Address(String street, String city, String state, String zip) {
+	this.street=street;
+	this.city=city;
+	this.state=state;
+	this.zip=zip;
+	
+	// TODO Auto-generated constructor stub
+}
+
 public String getCity() {
 	return city;
 }

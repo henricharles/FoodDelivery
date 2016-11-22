@@ -6,14 +6,25 @@ import javax.persistence.*;
 
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-
 public abstract class Person {
 	@Id
-	//@GeneratedValue(strategy = GenerationType.AUTO)
 	@GeneratedValue(strategy = GenerationType.TABLE)
 	private int person_Id;
 	private long phone;
 	private String email;
+	private String firstName;
+	private String lastName;
+	
+	@Temporal(TemporalType.DATE)
+	private Date dateOfBirth;
+	
+	@Embedded
+	private Address adress;
+
+	public Person(){
+		
+	}
+
 	public int getPerson_Id() {
 		return person_Id;
 	}
@@ -38,27 +49,6 @@ public abstract class Person {
 		this.email = email;
 	}
 
-	private String firstName;
-	private String lastName;
-	
-	@Temporal(TemporalType.DATE)
-	private Date dateOfBirth;
-	
-	@Embedded
-	private Address adress;
-
-	public Address getAdress() {
-		return adress;
-	}
-
-	public void setAdress(Address adress) {
-		this.adress = adress;
-	}
-
-	public Person(){
-		
-	}
-	
 	public String getFirstName() {
 		return firstName;
 	}
@@ -81,6 +71,14 @@ public abstract class Person {
 
 	public void setDateOfBirth(Date dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
+	}
+
+	public Address getAdress() {
+		return adress;
+	}
+
+	public void setAdress(Address adress) {
+		this.adress = adress;
 	}
 
 }
