@@ -19,10 +19,9 @@ public class Order {
 	private OrderStatus status;
 	
 	private int amount;
-	@OneToMany(cascade=CascadeType.PERSIST,mappedBy="order")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy="order")
 	private List<Product> product=new ArrayList<>();
 
-	
 	@ManyToOne(cascade=CascadeType.ALL)
 	private Customer customer;
 	
