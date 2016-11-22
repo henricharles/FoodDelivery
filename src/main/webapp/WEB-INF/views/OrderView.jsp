@@ -10,6 +10,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%@include file="include/header.jsp" %>
 <h3>Your Order :</h3>
 	<table>
 		<c:forEach var="element" items="${order.product}">

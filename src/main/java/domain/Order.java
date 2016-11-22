@@ -19,7 +19,8 @@ public class Order {
 	private OrderStatus status;
 	
 	private int amount;
-	@OneToMany(cascade=CascadeType.PERSIST,mappedBy="order")
+	@OneToMany
+	@JoinColumn(name="order_id")
 	private List<Product> product=new ArrayList<>();
 
 	

@@ -21,9 +21,6 @@ public class Product {
 	@ManyToOne(cascade=CascadeType.PERSIST)
 	private Category category;
 	
-	@ManyToOne(cascade=CascadeType.PERSIST)
-	private Order order;
-	
 	public Category getCategory() {
 		return category;
 	}
@@ -32,13 +29,6 @@ public class Product {
 		this.category = category;
 	}
 
-	public Order getOrder() {
-		return order;
-	}
-
-	public void setOrder(Order order) {
-		this.order = order;
-	}
 
 	public String getDescription() {
 		return description;

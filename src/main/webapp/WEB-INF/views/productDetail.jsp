@@ -2,46 +2,44 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Product Detail</title>
-<style type="text/css">
-		.content img{
-			max-height:200px;
-		}
-		
-		li{
-			display: inline-block;
-			padding-left:20px;
-		}
-		.content>li{
-			display:inline-block;
-		}
-		li>ul>li{
-			display:block;
-		}
-		
-		.categories ul{
-			padding-top:30px;
-		}		
-	</style>
+<title>Product Detail</title>	
+<link  type="text/css" href="../../css/bootstrap.css" rel="stylesheet">
+	<link  type="text/css" href="../../css/main.css" rel="stylesheet">
+	<script type="text/javascript" src="../../js/bootstrap.js"></script>	
 </head>
 <body>
-	<div class="content">
-		<h2>${product.name}</h2>
-		<%-- <div class="pic">
-			<img alt="${product.image}" src="images/${product.image}">
-		</div> --%>
-		<div class="product-detail">
-			<ul>
-				<li><p>${product.description}</p></li>
-				<li><p>${product.price}</p></li>
-			</ul>
+	<%@include file="include/header.jsp" %>
+	
+	<section class="product-detail">
+	<div class="product">
+		<header>
+		    <hgroup>
+		      <h1>${product.name}</h1>
+		    </hgroup>
+		  </header>
+		  <figure>
+		  	<img src="../../images/images1.jpg">
+		   	<%-- <img alt="${product.image}" src="images/${product.image}"> --%>
+		   </figure>
+		   
+		   
+		    <section>
+ 
+			  <p>${product.description}</p>
+			 
+			  <details>
+			   <summary>${product.price}</summary>
+			  </details>
+			<div class="order-button">
+				<form action="order/${product.id}" method="post">
+					<input type="submit" value="Add Cart"/>
+				</form>
+			</div>
 		</div>
-		
-		<div class="order-button">
-			<form action="order/${product.id}" method="get">
-				<input type="submit" value="Add Cart"/>
-			</form>
-		</div>
-	</div>
+	 
+  	</section>
+ 
+</div>
+	
 </body>
 </html>

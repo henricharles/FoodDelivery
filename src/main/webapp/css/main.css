@@ -1,0 +1,143 @@
+@CHARSET "ISO-8859-1";
+.content li{
+	display:inline-block;
+}
+.content img{
+			max-height:200px;
+		}
+		
+		li{
+			display: inline-block;
+		}
+		.content>li{
+			display:inline-block;
+		}
+		li>ul>li{
+			display:block;
+		}
+		.product-col>li{
+			text-align:center;
+			display: block;
+		}
+		.categories ul{
+			padding-top:30px;
+		}		
+		
+	html {
+			  height: 100%;
+			  background: #f3f3f3;
+			  background: -moz-linear-gradient(top, #f3f3f3 0%, #ffffff 50%);
+			  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f3f3f3), color-stop(50%,#ffffff));
+			  background: -webkit-linear-gradient(top, #f3f3f3 0%,#ffffff 50%);
+			  background: -o-linear-gradient(top, #f3f3f3 0%,#ffffff 50%);
+			  background: -ms-linear-gradient(top, #f3f3f3 0%,#ffffff 50%);
+			  background: linear-gradient(top, #f3f3f3 0%,#ffffff 50%);
+			  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#f3f3f3', endColorstr='#ffffff',GradientType=0 );
+			}
+			h1, h4 {
+			  font-family: Helvetica Neue, Arial, sans-serif;
+			  font-weight: normal;
+			  margin: 0; 
+			}
+			h1 { 
+			  font-size: 24pt;
+			}
+			h4 {
+			  font-size: 16pt;
+			  color: #aaa; 
+			}
+			section {
+			  font-family: Tahoma, Arial, sans-serif;
+			  line-height: 150%;
+			  width: 400px;
+			  color: #333;
+			  padding:10px;
+			}
+			
+			section.product-detail img{
+				width:100%;
+				
+			}
+			
+			section.product-detail product{
+				display: inline-block;
+				border: 1px solid silver;
+			}
+			
+				figure {
+				  display: inline-block;
+				}
+				figure img {
+				  max-width: 350px;
+				}
+				section {
+				  font-family: Tahoma, Arial, sans-serif;
+				  line-height: 150%;
+				  float: right;
+				  width: 300px;
+				  color: #333;
+				}
+				.order-button input, .order-button>a {
+				  background: #36a9ea;
+				  background: -moz-linear-gradient(top, #36a9ea 0%, #127fd2 100%);
+				  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#36a9ea), color-stop(100%,#127fd2));
+				  background: -webkit-linear-gradient(top, #36a9ea 0%,#127fd2 100%);
+				  background: -o-linear-gradient(top, #36a9ea 0%,#127fd2 100%);
+				  background: -ms-linear-gradient(top, #36a9ea 0%,#127fd2 100%);
+				  background: linear-gradient(top, #36a9ea 0%,#127fd2 100%);
+				  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#36a9ea', endColorstr='#127fd2',GradientType=0 );
+				  border: 1px solid #00599d;
+				  color: #fff;
+				  padding: 8px 20px;
+				  -webkit-border-radius: 3px;
+				  border-radius: 3px;
+				  -webkit-box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, .1), inset 0px 1px 0px 0px rgba(250, 250, 250, .3);
+				  box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, .1), inset 0px 1px 0px 0px rgba(250, 250, 250, .3);
+				  text-shadow: 0px 1px 1px #156cc4;
+				  filter: dropshadow(color=#156cc4, offx=0, offy=1);
+				  font-size: 10pt; 
+				}
+			 
+			.order-button input:hover, .order-button>a:hover{
+			  background: #2f90d5;
+			  background: -moz-linear-gradient(top, #2f90d5 0%, #0351b7 100%);
+			  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#2f90d5), color-stop(100%,#0351b7));
+			  background: -webkit-linear-gradient(top, #2f90d5 0%,#0351b7 100%);
+			  background: -o-linear-gradient(top, #2f90d5 0%,#0351b7 100%);
+			  background: -ms-linear-gradient(top, #2f90d5 0%,#0351b7 100%);
+			  background: linear-gradient(top, #2f90d5 0%,#0351b7 100%);
+			  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#2f90d5', endColorstr='#0351b7',GradientType=0 );
+			}
+			 
+			.order-button input:active ,.order-button>a:active {
+			  background: #127fd2;
+			  -webkit-box-shadow: inset 0px 2px 1px 0px rgba(0, 47, 117, .5), 0px 1px 1px 0px rgba(0, 0, 0, 0);
+			  box-shadow: inset 0px 2px 1px 0px rgba(0, 47, 117, .5), 0px 1px 1px 0px rgba(0, 0, 0, 0); 
+			}
+	
+		.item {
+		    padding-left: 5px;
+		    padding-right: 5px;
+			width: 30%;
+			margin-left: 15px;
+		}
+		.product-col {
+		    padding: 15px 15px 10px;
+		    margin-bottom: 20px;
+		    background: #fff;
+		    border: 1px solid #e8e8e8;
+		}
+		.product-col img{
+			display:inline-block;
+		}
+		.product-col a{
+		    font-size: 18px;
+		    text-transform: uppercase;
+		    text-decoration: none;
+		} 
+		.product-col a:hover{
+		    text-decoration: underline;
+		} 
+		
+		.price{padding: 10px 0;color: #2f353b;font-size: 24px;padding-right: 5px;}
+		

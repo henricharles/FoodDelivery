@@ -14,6 +14,7 @@ import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -94,6 +95,14 @@ public class MvcConfigure extends WebMvcConfigurerAdapter {
 		return bean;
 	}
 
+	@Bean
+	public CommonsMultipartResolver multipartResolver(){
+	    CommonsMultipartResolver commonsMultipartResolver = new CommonsMultipartResolver();
+	    commonsMultipartResolver.setDefaultEncoding("utf-8");
+	    commonsMultipartResolver.setMaxUploadSize(5000000);
+	    return commonsMultipartResolver;
+	}
+	
 	// -------------- Serving Resources ----------------------
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {

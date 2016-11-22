@@ -19,4 +19,11 @@ public class OrderImpl implements OrderService {
 		List<Order> CustomerOrder = OrdDAO.findBycustomer(id);
 		return CustomerOrder;
 	}
+	
+	public void save(Order order){
+		OrdDAO.save(order);
+	}
+	public Order findOne(int id){
+		return OrdDAO.getOne(id);
+	}
 }

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import configuration.MvcConfigure;
 import dao.ProductDao;
@@ -20,9 +21,12 @@ import domain.Product;
 import domain.Store;
 import service.AdminService;
 import service.CategoryService;
+import service.CustomerService;
+import service.OrderService;
 import service.ProductService;
 
 @Controller
+@SessionAttributes("shoppingList")
 public class MainController{
 	@Autowired
 	ProductService productService;
@@ -32,6 +36,21 @@ public class MainController{
 	
 	@Autowired
 	AdminService adminService;
+	
+	@Autowired
+	OrderService orderService;
+	
+	@Transactional
+	@RequestMapping(value={"/"})
+	public String home(Model model)
+	{	
+		if(!model.containsAttribute("order")) {
+	      model.addAttribute("shoppingList", new ArrayList<Product>());
+	    }
+		model.addAttribute("categories",categoryService.getAll());
+		System.out.println(categoryService.getAll().get(0).getProduct());
+		return "index";
+	}
 		
 	@Transactional
 	@RequestMapping("/index")
@@ -59,8 +78,5 @@ public class MainController{
 		System.out.println(productService.GetSingleProduct(id));
 		return "productDetail";
 	}
-	@RequestMapping(value="order/${id}",method=RequestMethod.GET)
-	public String order(@PathVariable int id,Model model){
-		
-	}
+	
 }
