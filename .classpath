@@ -20,7 +20,10 @@
 	</classpathentry>
 	<classpathentry kind="src" output="target/test-classes" path="src/test/java">
 		<attributes>
+<<<<<<< HEAD
 			<attribute name="optional" value="true"/>
+=======
+>>>>>>> ca1e78d7162da247f4434b59218061587647fbd6
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>

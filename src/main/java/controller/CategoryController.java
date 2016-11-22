@@ -1,0 +1,165 @@
+package controller;
+
+import java.io.*;
+
+import java.io.BufferedOutputStream;
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.lang.*;
+import java.util.Hashtable;
+import java.util.Iterator;
+import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.apache.commons.io.FilenameUtils;
+import org.apache.commons.io.IOUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
+
+import domain.Category;
+import service.AdminService;
+import service.CategoryService;
+
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.FileUploadException;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.apache.commons.io.output.*;
+
+@Controller
+public class CategoryController extends HttpServlet {
+
+	private boolean isMultipart;
+	private String filePath;
+	private File file;
+
+	public void init() {
+		// Get the file location where it would be stored.
+
+	}
+
+	@Autowired
+	CategoryService categoryService;
+
+	@RequestMapping("/addCategory")
+	public String addCategory() {
+		return "addCategory";
+	}
+
+	@RequestMapping(value = "/categories", method = RequestMethod.GET)
+	public String getAll(Model model) {
+		model.addAttribute("categories", categoryService.getAll());
+		return "Categories";
+	}
+
+	@RequestMapping(value = "/categories", method = RequestMethod.POST)
+	public String add(HttpServletRequest request, HttpServletResponse response) {
+		Category c = new Category();
+		c.setName(request.getParameter("name"));
+		System.out.println(c);
+		File file;
+		int maxFileSize = 5000 * 1024;
+		int maxMemSize = 5000 * 1024;
+		String filePath = "C:/Users/manoj/Desktop/deployed app/foodDelivery/images/";
+
+		String contentType = request.getContentType();
+		String fieldName = null;
+		String fname = "";
+		if ((contentType.indexOf("multipart/form-data") >= 0)) {
+
+			DiskFileItemFactory factory = new DiskFileItemFactory();
+			factory.setSizeThreshold(maxMemSize);
+			// factory.setRepository(new File("c:\\temp"));
+			ServletFileUpload upload = new ServletFileUpload(factory);
+			upload.setSizeMax(maxFileSize);
+
+			Hashtable< String, String> hs = new Hashtable<>();
+			
+			try {
+				List fileItems = upload.parseRequest(request);
+				Iterator i = fileItems.iterator();
+				while (i.hasNext()) {
+					//System.out.println(FileItem(i.next()));
+					FileItem fi = (FileItem) i.next();
+					//System.out.println(fi.getFieldName()+"---"+fi.getString());
+					hs.put(fi.getFieldName(), fi.getString());
+					System.out.println(fi.getName());
+					if (!fi.isFormField()) {
+						fieldName = null;
+						fname = FilenameUtils.getName(fi.getName());
+//						fieldName = fi.getFieldName().toString();
+//						String fileName = fi.getName();
+						boolean isInMemory = fi.isInMemory();
+						long sizeInBytes = fi.getSize();
+						file = new File(filePath + fname);
+						fi.write(file);
+						// out.println("Uploaded Filename: " + filePath +
+						// fileName + "<br>");
+						
+						c.setImage(fname);
+						
+					}
+				}
+				c.setName(hs.get("categoryName"));
+				categoryService.createCategory(c);
+
+			} catch (Exception ex) {
+				System.out.println(ex);
+			}
+		}
+		return "redirect:/categories";
+
+		///////////////////////
+
+	}
+
+	@RequestMapping(value = "/fileUpload", method = RequestMethod.POST)
+	public String add(HttpServletRequest request) {
+		DiskFileItemFactory d = new DiskFileItemFactory();
+		ServletFileUpload uploader = new ServletFileUpload(d);
+		return "redirect:/categories";
+	}
+
+	@RequestMapping(value = "/categories/{id}", method = RequestMethod.GET)
+	public String get(@PathVariable int id, Model model) {
+		model.addAttribute("category", categoryService.find(id));
+		return "categoryDetail";
+	}
+
+	@RequestMapping(value = "/categories/{id}", method = RequestMethod.POST)
+	public String update(Category category, @PathVariable int id) {
+		categoryService.update(category); // car.id already set by binding
+		System.out.println("update");
+		return "redirect:/categories";
+	}
+
+	@RequestMapping(value = "/categories/delete", method = RequestMethod.POST)
+	public String delete(@RequestParam("id") int id) {
+		categoryService.delete(id);
+		System.out.println("deleted");
+		return "redirect:/categories";
+	}
+	
+	
+	
+}
