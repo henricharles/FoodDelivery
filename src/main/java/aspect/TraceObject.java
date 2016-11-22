@@ -9,7 +9,7 @@ import domain.Category;
 // When it will be applied
 //           Where it will applied
 	public class TraceObject{
-	@Before("execution(public String addCategoryy(..))")
+	@Before("execution(public String controller.CategoryController.addCategoryy(..))")
 	public void tracebeforemethod(JoinPoint joinpoint){
 	// What we want to do
 		Object[] args=joinpoint.getArgs();
@@ -19,7 +19,7 @@ import domain.Category;
 	}
 	// When it will be applied
 	//                  Where it will applied
-	@After("execution(public String addCategoryy(..))")
+	@After("execution(public String controller.CategoryController.addCategoryy(..))")
 	public void traceaftermethod(JoinPoint joinpoint) {
 	// What we want to do
 		Object[] args=joinpoint.getArgs();
