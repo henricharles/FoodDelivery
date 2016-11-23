@@ -6,7 +6,7 @@
     <html>
     <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <title>Creation of customer</title>
+    <title>Member of customer</title>
     </head>
     <style>
     div.ex {
@@ -17,63 +17,69 @@
     }
     </style>
     <body>
-    	<h1>Member Form</h1>
+    	<h1>Member registration Form</h1>
     	<div class="ex">
-    		<form  action="add1" method="post">
+    		<spring:url var="customer_add1" value="/Customers/add1" />
+    		<form:form  modelAttribute="newMember" class="form-horizontal" action="${customer_add1}" >
     		
     			<table style="with: 50%">
     				
     				<tr>
     					<td>First Name</td>
-    					<td><input name="firstName" type="text" class="input-large"/></td>
+    					<td><form:input path="firstName" type="text" class="form:input-large"/></td>
     				</tr>
     				<tr>
     					<td>Last Name</td>
-    					<td><input name="lastName" type="text" class="input-large"/></td>
+    					<td><form:input path="lastName" type="text" />
+    					<form:errors path="lastName"/>
+    					</td>
     				</tr>
     				
     				<tr>
     					<td>Email</td>
-    					<td><input name="email" type="text" class="form:input-large"/></td>
+    					<td><form:input path="email" type="text" />
+    					<form:errors path="email"/>
+    					</td>
     				</tr>
     				<tr>
     					<td> User Name</td>
-    					<td><input type="text" name="user.username" class="form:input-large"/></td>
+    					<td><form:input type="text" path="user.username" /></td>
     				</tr>
     				<tr>
     					<td> Password</td>
-    					<td><input type="password" name="user.password" class="form:input-large"/></td>
+    					<td><form:input type="password" path="user.password" /></td>
+    					<form:errors path="user.password"/>
     				</tr>
     		
     				<tr>
     					<td>City</td>
-    					<td><input type="text" name="adress.city" class="form:input-large"/>
+    					<td><form:input type="text" path="adress.city" />
     	
     					</td>
     				</tr>
     				<tr>
     					<td>State</td>
-    					<td><input type="text" name="adress.state" class="form:input-large"/>
+    					<td><form:input type="text" path="adress.state" />
     	
     					</td>
     				</tr>
     				
     				<tr>
     					<td>Street</td>
-    					<td><input type="text" name="adress.street" class="form:input-large" />
+    					<td><form:input type="text" path="adress.street" />
     	
     					</td>
     				</tr>
     				<tr>
     					<td>Zip</td>
-    					<td><input type="text" name="adress.zip" class="form:input-large" />
+    					<td><form:input type="text" path="adress.zip" />
     	
     					</td>
     				</tr>
     				
 <tr>
     					<td>Mobile Number</td>
-    					<td><input type="text" name="phone" />
+    					<td><form:input type="text" path="phone" />
     	
     					</td>
   
@@ -81,7 +87,7 @@
     				<tr>
     			</table>
     			<input type="submit" value="register" />
-    		</form>
+    		</form:form>
     	</div>
     </body>
     </html>

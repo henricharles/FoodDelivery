@@ -10,5 +10,11 @@ import domain.Store;
 @Repository
 public interface CustomerDao extends JpaRepository<Customer,Integer>{
 	public List<Customer> findAll();
+	List<Customer >findByEmail(String emailAddress);
+	List<Customer> findByFirstName(String email);
+	List<Customer> findByUserUsername(String username);
+	List<Customer> findByUserRolesName(String role);
+	public Customer save(Customer cutomer);
+	
 
 }

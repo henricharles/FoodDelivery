@@ -1,9 +1,11 @@
 package controller;
 
+import javax.transaction.Transactional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -15,6 +17,7 @@ import domain.Customer;
 import service.CustomerService;
 
 @Controller
+
 @RequestMapping(value = "/Customers")
 public class CustomerController {
 
@@ -23,11 +26,12 @@ public class CustomerController {
 
 	@RequestMapping(value = "/Add", method = RequestMethod.GET)
 	public String displayCustomerView(@ModelAttribute("newCustomer") Customer customer) {
+		//model.addAttribute("customer", new Customer());
 		return "createCustomer";
 	}
-
+@org.springframework.transaction.annotation.Transactional
 	@RequestMapping(value = "/Signup", method = RequestMethod.POST)
-	public String createCustomer(@ModelAttribute("newCustomer") @Valid Customer customerToBeAdded, BindingResult result) {
+	public String createCustomer( @Valid @ModelAttribute("newCustomer") Customer customerToBeAdded, BindingResult result) {
 		if(result.hasErrors()) {
 			return "createCustomer";
 		}
@@ -37,13 +41,18 @@ public class CustomerController {
 	}
 	
 	@RequestMapping(value = "/member", method = RequestMethod.GET)
-	public String createMemebr()
+	public String createMemebr(Model model)
 	{
+		model.addAttribute("newMember", new Customer());
 		return "member";  
 	}
 	@RequestMapping(value = "/add1", method = RequestMethod.POST)
-	public String createCustomer(Customer customer) {
-		customerService.createCustomer(customer,"ROLE_ADMIN");
+	
+	public String createMember(@ModelAttribute("newMember") @Valid Customer memberToBeAdded, BindingResult result1) {
+		if(result1.hasErrors()) {
+			return "member";
+		}
+		customerService.createCustomerAdmin(memberToBeAdded,"ROLE_ADMIN");
 		
 		return "redirect:/welcome";
 	}

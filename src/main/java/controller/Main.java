@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+//<<<<<<< HEAD
 //package controller;
 //
 //import java.util.ArrayList;
@@ -50,7 +50,6 @@
 //	}
 //	
 //}
-=======
 package controller;
 
 import java.util.ArrayList;
@@ -66,7 +65,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import configuration.MvcConfigure;
+//import configuration.MvcConfigure;
 import dao.ProductDao;
 import domain.Address;
 import domain.Product;
@@ -109,7 +108,8 @@ public class Main {
 		System.out.println(categoryService.find(id).getProduct());
 		return "productView";
 	}
-	
-	
 }
->>>>>>> ca1e78d7162da247f4434b59218061587647fbd6
+	
+	
+
+

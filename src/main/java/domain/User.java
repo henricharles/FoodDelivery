@@ -11,14 +11,23 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity(name = "USERS")
 public class User {
 
 	@Id
 	@Column(name = "USERNAME", nullable = false, unique = true)
+	@NotNull
 	private String username;
 	
+	@NotBlank(message="enter atlist 8 chararater")
+	@Size(min=8,message="enter atlist 8 chararater")
 	@Column(name = "PASSWORD", nullable = false)
 	private String password;
 	
@@ -63,6 +72,10 @@ public class User {
 
 	public List<Role> getRoles() {
 		return roles;
+	}
+	public User()
+	{
+		
 	}
 
 	public void setRoles(List<Role> roles) {

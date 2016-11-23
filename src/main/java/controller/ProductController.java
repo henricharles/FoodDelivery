@@ -6,17 +6,17 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-<<<<<<< HEAD
+
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-=======
+
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
->>>>>>> ca1e78d7162da247f4434b59218061587647fbd6
+
 
 import domain.Category;
 import domain.Product;
@@ -48,22 +48,22 @@ public class ProductController {
 		return "product";
 	}
 
-	@RequestMapping(value = "/Update", method = RequestMethod.POST)
-	public String UpdateProduct(@RequestParam("productNumber") int id, ModelMap model) {
-
-		val = "Update";
-		model.addAttribute("Val", val);
-
-<<<<<<< HEAD
-		prodHand.GetSingleProduct(id);
-		// model.put("product", P);
-=======
-		Product P = prodHand.GetSingleProduct(id);
-		model.put("product", P);
->>>>>>> ca1e78d7162da247f4434b59218061587647fbd6
-
-		return "AddProducts";
-	}
+//	@RequestMapping(value = "/Update", method = RequestMethod.POST)
+//	public String UpdateProduct(@RequestParam("productNumber") int id, ModelMap model) {
+//
+//		val = "Update";
+//		model.addAttribute("Val", val);
+//
+//<<<<<<< HEAD
+//		prodHand.GetSingleProduct(id);
+//		// model.put("product", P);
+//
+//		Product P = prodHand.GetSingleProduct(id);
+//		model.put("product", P);
+//>>>>>>> ca1e78d7162da247f4434b59218061587647fbd6
+//
+//		return "AddProducts";
+//	}
 
 	@RequestMapping(value = "/products", method = RequestMethod.POST)
 	public String OpenAddProduct(ModelMap model) {
@@ -83,12 +83,8 @@ public class ProductController {
 		if (val.equals("Add")) {
 			p.setCategory(prodHand.GetCategoryById(p.getCategory().getId()));
 			prodHand.AddProduct(p);
-<<<<<<< HEAD
-		} else {
-=======
 		}
 		else{ 	
->>>>>>> ca1e78d7162da247f4434b59218061587647fbd6
 			prodHand.UpdateProduct(p);
 		}
 		model.addAttribute("product", prodHand.getAllProduct());
@@ -103,14 +99,10 @@ public class ProductController {
 		catList = prodHand.GetCategory();
 		return catList;
 	}
-<<<<<<< HEAD
 
 	@RequestMapping(value = "/createStore")
 	public String displayStore() {
 		return "addStore";
 	}
-
-=======
 	
->>>>>>> ca1e78d7162da247f4434b59218061587647fbd6
 }

@@ -26,24 +26,31 @@
     				
     				<tr>
     					<td>First Name</td>
-    					<td><form:input path="firstName" type="text" class="form:input-large"/></td>
+    					<td><form:input path="firstName" type="text" class="form:input-large"/>
+    					<form:errors path="firstName" cssStyle="color:red"/></td>
     				</tr>
     				<tr>
     					<td>Last Name</td>
-    					<td><form:input path="lastName" type="text" class="form:input-large"/></td>
+    					<td><form:input path="lastName" type="text" class="form:input-large"/>
+    					<form:errors path="lastName" cssStyle="color:red"/>
+    					</td>
     				</tr>
     				
     				<tr>
     					<td>Email</td>
-    					<td><form:input path="email" type="text" class="form:input-large"/></td>
+    					<td><form:input path="email" type="text" class="form:input-large"/>
+    					<form:errors path="email" cssStyle="color:red"/>
+    					</td>
     				</tr>
     				<tr>
     					<td> User Name</td>
-    					<td><form:input type="text" path="user.username" /></td>
+    					<td><form:input type="text" path="user.username" />
+    					<form:errors path="user.username" cssStyle="color:red"/></td>
     				</tr>
     				<tr>
     					<td> Password</td>
     					<td><form:input type="password" path="user.password" /></td>
+    					<form:errors path="user.password" cssStyle="color:red"/>
     				</tr>
     		
     				<tr>

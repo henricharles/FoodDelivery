@@ -17,7 +17,7 @@ import domain.Store;
 public class AdminServiceImpl implements AdminService{
 	@Autowired
 	private StoreDao storeDao;
-<<<<<<< HEAD
+
 	//creating a Schelude Object for delivery
 	@Autowired
 	private ScheduleDao scheludedao;
@@ -38,12 +38,8 @@ public class AdminServiceImpl implements AdminService{
 		
 		
 	}
-=======
-	
 
-	
->>>>>>> ca1e78d7162da247f4434b59218061587647fbd6
-		
+
 
 
 }

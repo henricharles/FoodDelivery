@@ -24,7 +24,7 @@
 			    	<h3 class="panel-title">Please sign in</h3>
 			 	</div>
 			  	<div class="panel-body">
-			  	<c:if test="${not empty param.login_error}">
+			  	<c:if test="${error eq true}">
 					<div class="alert alert-danger">
 						<spring:message code="AbstractUserDetailsAuthenticationProvider.badCredentials"/><br />
 					</div>
