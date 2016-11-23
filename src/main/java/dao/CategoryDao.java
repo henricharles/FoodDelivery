@@ -9,5 +9,6 @@ import domain.Store;
 
 public interface CategoryDao extends JpaRepository<Category,Integer>{
 	//public void update(@Param("name")String name,@Param("id") int id);
+	
 }
 

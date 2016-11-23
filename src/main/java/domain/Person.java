@@ -3,17 +3,39 @@ package domain;
 import java.util.Date;
 
 import javax.persistence.*;
+import javax.validation.constraints.Digits;
+
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-
 public abstract class Person {
 	@Id
-	//@GeneratedValue(strategy = GenerationType.AUTO)
 	@GeneratedValue(strategy = GenerationType.TABLE)
 	private int person_Id;
+	
 	private long phone;
+	@Email(message="check your email Id")
 	private String email;
+	
+	@NotBlank(message=" first name should not be empty")
+	private String firstName;
+	
+	@NotBlank(message=" Last name should not be empty")
+	private String lastName;
+	
+	@Temporal(TemporalType.DATE)
+	private Date dateOfBirth;
+	
+	@Embedded 
+	private Address adress;
+
+	public Person(){
+		
+	}
+
 	public int getPerson_Id() {
 		return person_Id;
 	}
@@ -38,27 +60,6 @@ public abstract class Person {
 		this.email = email;
 	}
 
-	private String firstName;
-	private String lastName;
-	
-	@Temporal(TemporalType.DATE)
-	private Date dateOfBirth;
-	
-	@Embedded
-	private Address adress;
-
-	public Address getAdress() {
-		return adress;
-	}
-
-	public void setAdress(Address adress) {
-		this.adress = adress;
-	}
-
-	public Person(){
-		
-	}
-	
 	public String getFirstName() {
 		return firstName;
 	}
@@ -81,6 +82,14 @@ public abstract class Person {
 
 	public void setDateOfBirth(Date dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
+	}
+
+	public Address getAdress() {
+		return adress;
+	}
+
+	public void setAdress(Address adress) {
+		this.adress = adress;
 	}
 
 }

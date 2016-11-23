@@ -4,6 +4,7 @@ package controller;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
@@ -13,14 +14,27 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 //import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+
 import domain.Category;
 import domain.Product;
+
+import service.CustomerService;
+import service.ProductService;
+
 import service.ProductImpl;
 
 import org.springframework.ui.Model;
@@ -33,7 +47,14 @@ public class ProductController {
 	@Autowired
 	private ProductImpl prodHand;
 	String val = ""; 
-	@Transactional
+	
+	private ProductService prodHand;
+
+	String val = "";
+
+	@Autowired
+	private CustomerService customer1;
+
 	@RequestMapping(value = "/addProduct", method = RequestMethod.GET)
 	public String PageLoad(ModelMap model) {
 		model.addAttribute("product", prodHand.getAllProduct());
@@ -54,9 +75,10 @@ public class ProductController {
 		val = "Update";
 		model.addAttribute("Val", val);
 
+		prodHand.GetSingleProduct(id);
+		// model.put("product", P);
 		Product P = prodHand.GetSingleProduct(id);
 		model.put("product", P);
-
 		return "AddProducts";
 	}
 
@@ -105,6 +127,11 @@ public class ProductController {
 		List<Category> catList = new ArrayList<Category>();
 		catList = prodHand.GetCategory();
 		return catList;
+	}
+
+	@RequestMapping(value = "/createStore")
+	public String displayStore() {
+		return "addStore";
 	}
 	
 	@Transactional

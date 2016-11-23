@@ -1,3 +1,4 @@
+
 package controller;
 
 import java.util.ArrayList;
@@ -14,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import configuration.MvcConfigure;
+//import configuration.MvcConfigure;
 import dao.ProductDao;
 import domain.Address;
 import domain.Customer;
@@ -75,6 +76,7 @@ public class MainController{
 		System.out.println(categoryService.find(id).getProduct());
 		return "productView";
 	}
+
 	
 	@Transactional
 	@RequestMapping(value="productList/productDetail/{id}",method=RequestMethod.GET)
@@ -86,3 +88,4 @@ public class MainController{
 	}
 	
 }
+

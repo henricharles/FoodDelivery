@@ -1,2 +1,7 @@
+<<<<<<< HEAD
 eclipse.preferences.version=1
 encoding//src/main/resources=UTF-8
+=======
+eclipse.preferences.version=1
+encoding//src/main/resource=UTF-8
+>>>>>>> 1bfc4fb0b2c06c1905dc8908161c7264452aa346
