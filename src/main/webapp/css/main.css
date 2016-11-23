@@ -141,3 +141,13 @@
 		
 		.price{padding: 10px 0;color: #2f353b;font-size: 24px;padding-right: 5px;}
 		
+		
+		.categories{
+			display:inline-block;
+			text-align: center;
+		}
+		
+		.categories img{
+			width: 200px;
+		}
+		

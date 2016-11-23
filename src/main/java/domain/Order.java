@@ -19,7 +19,7 @@ public class Order {
 	@Enumerated(EnumType.STRING)
 	private OrderStatus status;
 	
-	private int amount;
+	private double amount;
 	
 	@OneToMany(fetch = FetchType.EAGER)
 	@JoinColumn(name="order_id")
@@ -28,6 +28,18 @@ public class Order {
 	@ManyToOne(cascade=CascadeType.ALL)
 	private Customer customer;
 	
+	public Customer getCustomer() {
+		return customer;
+	}
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
+	public Schedule getSchedule() {
+		return schedule;
+	}
+	public void setSchedule(Schedule schedule) {
+		this.schedule = schedule;
+	}
 	@ManyToOne(cascade=CascadeType.ALL)
 	private Schedule schedule;
 	
@@ -55,10 +67,10 @@ public class Order {
 	public void setStatus(OrderStatus status) {
 		this.status = status;
 	}
-	public int getAmount() {
+	public double getAmount() {
 		return amount;
 	}
-	public void setAmount(int amount) {
+	public void setAmount(double amount) {
 		this.amount = amount;
 	}
 	

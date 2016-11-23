@@ -19,8 +19,8 @@ public class OrderImpl implements OrderService {
 	@Autowired
 	CustomerDao CustDAO;
 	
-	public List<Order> getOrderByID(int id){
-		Customer cust = CustDAO.findOne(id);
+	public List<Order> getOrderByUserName(String userName){
+		Customer cust = CustDAO.findByUsername(userName);
 		List<Order> CustomerOrder = OrdDAO.findBycustomer(cust);
 		return CustomerOrder;
 	}

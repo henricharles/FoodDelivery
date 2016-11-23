@@ -12,6 +12,7 @@
 <title>Add Product</title>
 </head>
 <body>
+<%@include file="Admin/header.jsp" %>
 
 	<form:form action="AddProduct" method="post" commandName="product"
 		enctype="multipart/form-data">

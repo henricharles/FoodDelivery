@@ -62,6 +62,9 @@ public class MvcConfigure extends WebMvcConfigurerAdapter {
 
 		return em;
 	}
+	
+	
+	
 
 	private Properties hibernateProperties() {
 		Properties properties = new Properties();
@@ -102,6 +105,8 @@ public class MvcConfigure extends WebMvcConfigurerAdapter {
 	    commonsMultipartResolver.setMaxUploadSize(50000000);
 	    return commonsMultipartResolver;
 	}
+	
+	
 	
 	// -------------- Serving Resources ----------------------
 	@Override

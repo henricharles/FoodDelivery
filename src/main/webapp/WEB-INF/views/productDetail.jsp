@@ -18,7 +18,7 @@
 		    </hgroup>
 		  </header>
 		  <figure>
-		  	<img src="../../images/images1.jpg">
+		  	<img src="/foodDelivery/images/${product.id}">
 		   	<%-- <img alt="${product.image}" src="images/${product.image}"> --%>
 		   </figure>
 		   

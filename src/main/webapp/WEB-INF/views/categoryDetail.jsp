@@ -3,12 +3,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Add a Car</title>
-<style type="text/css">
-		img{
-			max-width:100px;
-		}
-		
-	</style>
+<%@include file="Admin/header.jsp" %>
+<link  type="text/css" href="../css/bootstrap.css" rel="stylesheet">
+<link  type="text/css" href="../css/main.css" rel="stylesheet">
+	<script type="text/javascript" src="../js/bootstrap.js"></script>
 </head>
 <body>
 	<form action="../categories/${category.id}" method="post">
@@ -19,7 +17,7 @@
 		</tr>
 		<tr>
 			<td>Image:</td>
-			<td><img src="../images/${category.image}"/></td>
+			<td><img src="/foodDelivery/images/${category.id}" width="200px"/></td>
 		</tr>
 	</table>
 	<input type="submit" value="update"/>

@@ -8,21 +8,21 @@
 <title>Category</title>
 </head>
 <body>
- 
-	<form:form action="categories" method="post" enctype="multipart/form-data" commandName="category">
+ 	<%@include file="Admin/header.jsp" %>
+	<form:form action="categories" method="post" commandName="category" enctype="multipart/form-data" >
 		<table>
 			<tr>
 			<td>Category Name:</td>
-			<td><form:input path="name" /> </td>
+			<td><form:input class="input-group" path="name" required="required" /> </td>
 			<td><form:errors path="name" cssStyle="color:red;"/></td>
 		</tr>
 		<tr>
 			<td>Choose Image:</td>
-			<td><form:input type="file" path="image"/> </td>
+			<td><form:input class="input-group" type="file" path="image"/> </td>
 			
 		</tr>
 		<tr colspan="2">
-			<td><input type="submit" value="save" /></td>
+			<td><input class="input-group label label-default" type="submit" value="save" /></td>
 		</tr>
 		</table>
 	</form:form>

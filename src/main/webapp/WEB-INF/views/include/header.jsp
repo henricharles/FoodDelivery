@@ -39,6 +39,8 @@
         <li><a href="index">Category</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
+      	<li><a href="/foodDelivery/cart">Cart</a></li>
+        <li><a href="/foodDelivery/OrderView/${user.username}">Order View</a></li>
         <li><a href="login">Log In</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->

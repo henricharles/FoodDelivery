@@ -5,37 +5,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
-<style type="text/css">
-		.content img{
-			max-height:200px;
-		}
-		
-		li{
-			display: inline-block;
-			padding-left:20px;
-		}
-		.content>li{
-			display:inline-block;
-		}
-		li>ul>li{
-			display:block;
-		}
-		
-		.categories ul{
-			padding-top:30px;
-		}		
-	</style>
 </head>
 <body>
-	<%@include file="include/header.jsp" %>
+	<%@include file="Admin/header.jsp" %>
 	<div class="content">
 		<ul>
 			<li>
 				<div class="image">
-					<a href="product">
+					<a href="addProduct">
 						<img alt="" src="image/product.png" />
 					</a>
-					<a href="product">Product</a>
+					<a href="/foodDelivery/addProduct">Product</a>
 				</div>
 			</li>
 			<li>
@@ -43,7 +23,7 @@
 					<a href="categories">
 						<img alt="" src="image/category.png" />
 					</a>
-					<a href="categories">Category</a>
+					<a href="/foodDelivery/categories">Category</a>
 				</div>
 			</li>
 			<li>

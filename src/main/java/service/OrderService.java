@@ -6,7 +6,7 @@ import domain.Order;
 
 public interface OrderService {
 	
-	public List<Order> getOrderByID(int id);
+	public List<Order> getOrderByUserName(String userName);
 	public void save(Order order);
 	public Order findOne(int id);
 }

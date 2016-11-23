@@ -12,22 +12,33 @@
 </head>
 <body>
 	<h3>Your Order :</h3>
-	<table>
-	
-		<c:forEach var="order" items="${order}" varStatus="rowStatus">
-			<c:forEach var="prod" items="${order.product}" varStatus="rowCount">
-				<tr><td>${prod.photo}</td></tr>
-				<tr><td>${prod.name}</td></tr>
-				<tr><td>${prod.description}</td></tr>
-				<tr><td>${prod.price }</td></tr>
-			</c:forEach>
+	<table border="1px">
 		<tr>
-			<td>${TotalOrderAmt}</td>
-			<td>${order.orderDate}</td>
-			<td>${order.status}</td>
+			<th>Image</th>
+			<th>Product</th>
+			<th>Desc</th>
+			<th>Price</th>
+			<th>Order Date</th>
+			<th>Status</th>
+		</tr>
+		
+		<c:forEach var="order" items="${order}" varStatus="rowStatus">
+		<tr>
+			<c:forEach var="prod" items="${order.product}" varStatus="rowCount">
+				<td><img src="/foodDelivery/image/${prod.id}" width="150px"/></td>
+				<td>${prod.name}</td>
+				<td>${prod.description}</td>
+				<td>${prod.price }</td>
+				<td>${order.orderDate}</td>
+				<td>${order.status}</td>
+			</c:forEach>
 		</tr>
 		</c:forEach>
+		
 	</table>
+	<br>
+	<br>
+	Total Amount ${TotalOrderAmt}
 
 </body>
 </html>

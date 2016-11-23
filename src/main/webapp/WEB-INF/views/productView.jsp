@@ -16,7 +16,7 @@
 			<c:forEach var="product" items="${products}">
 				<li class="item">
 					<ul class="product-col">
-						<li><img class="img-responsive" src="../images/images.jpg"></li>
+						<li><img class="img-responsive" src="/foodDelivery/images/${product.id}"></li>
 						<%-- <li><a href="productList/${product.id}"><img src="images/${product.image}"/></a></li> --%>
 						<li>
 							<a href="productDetail/${product.id}">${product.name}</a>

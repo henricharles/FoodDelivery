@@ -22,7 +22,7 @@ public class Category {
 	@Lob
 	private byte[] image;
 	
-	@OneToMany(mappedBy="category")
+	@OneToMany(fetch= FetchType.EAGER, mappedBy="category")
 	private List<Product> product=new ArrayList<>();
 	
 	

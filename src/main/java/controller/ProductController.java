@@ -33,7 +33,7 @@ public class ProductController {
 	@Autowired
 	private ProductImpl prodHand;
 	String val = ""; 
-
+	@Transactional
 	@RequestMapping(value = "/addProduct", method = RequestMethod.GET)
 	public String PageLoad(ModelMap model) {
 		model.addAttribute("product", prodHand.getAllProduct());

@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import configuration.MvcConfigure;
 import dao.ProductDao;
 import domain.Address;
+import domain.Customer;
 import domain.Product;
 import domain.Store;
 import service.AdminService;
@@ -26,7 +27,7 @@ import service.OrderService;
 import service.ProductService;
 
 @Controller
-@SessionAttributes("shoppingList")
+@SessionAttributes({"shoppingList","user"})
 public class MainController{
 	@Autowired
 	ProductService productService;
@@ -44,9 +45,14 @@ public class MainController{
 	@RequestMapping(value={"/"})
 	public String home(Model model)
 	{	
-		if(!model.containsAttribute("order")) {
+		if(!model.containsAttribute("shoppingList")) {
 	      model.addAttribute("shoppingList", new ArrayList<Product>());
 	    }
+		if(!model.containsAttribute("user")){
+			Customer cust=new Customer();
+			cust.setUsername("manoj");
+			model.addAttribute("user", cust);
+		}
 		model.addAttribute("categories",categoryService.getAll());
 		System.out.println(categoryService.getAll().get(0).getProduct());
 		return "index";

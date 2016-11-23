@@ -12,11 +12,19 @@ public class Customer extends Person {
 	private String username;
 	private String password;
 	
-	/*@OneToMany(cascade=CascadeType.ALL,mappedBy="customer")
-	private List<Order> orders=new ArrayList<>();*/
+	@OneToMany(mappedBy="customer")
+	private List<Order> orders=new ArrayList<>();
 
 	public Customer(){
 		
+	}
+
+	public List<Order> getOrders() {
+		return orders;
+	}
+
+	public void setOrders(List<Order> orders) {
+		this.orders = orders;
 	}
 
 	public String getUsername() {

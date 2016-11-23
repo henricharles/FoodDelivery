@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import domain.Customer;
 import domain.Order;
 import domain.OrderStatus;
 import domain.Product;
@@ -68,29 +69,42 @@ public class OrderController {
 		
 		
 	}
-	
+	@Transactional
 	@RequestMapping(value="/orderSave",method=RequestMethod.POST)
-	public String saveOrder(@ModelAttribute("shoppingList") List<Product> productList,@RequestParam("totalAmount") double total){
+	public String saveOrder(@ModelAttribute("shoppingList") List<Product> productList,@ModelAttribute("user") Customer customer,@RequestParam("totalAmount") double total){
 		Order order=new Order();
 		order.setProduct(productList);
 		order.setOrderDate(new Date());
 		order.setStatus(OrderStatus.INITIATED);
+		order.setAmount(total);
 		orderHandl.save(order);
-		return "redirect:/cart";
+		
+		System.out.println("inside saveOrder"+"\n"+order);
+		/*Customer cust=customerService.findByUsername(customer.getUsername());
+		System.out.println(cust.getPerson_Id());
+		//order.setCustomer(cust);
+		List<Order> orders=new ArrayList<Order>();
+		orders.add(order);
+		//orderHandl.save(order);
+		System.out.println(orders);
+		//cust.setOrders(orders);
+		//customerService.save(cust);
+*/		return "redirect:/cart";
 		
 	}
 	
 	@Transactional
 	@RequestMapping(value = "/OrderView/{CustomerID}", method = RequestMethod.GET)
-	public String OrderView(@PathVariable("CustomerID") int CustId, ModelMap model) {
+	public String OrderView(@PathVariable("CustomerID") String userName, ModelMap model) {
 	
-		List<Order> OrderList = orderHandl.getOrderByID(1);
+		List<Order> OrderList = orderHandl.getOrderByUserName(userName);
 		int totalAmount = 0;
 		for(Order o: OrderList){
 			totalAmount += o.getAmount();
 		}
 		model.addAttribute("order", OrderList);
 		model.addAttribute("TotalOrderAmt", totalAmount);
+		
 		return "OrderView";
 	}
 	

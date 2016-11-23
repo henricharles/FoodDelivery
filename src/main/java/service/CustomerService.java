@@ -10,4 +10,5 @@ public interface CustomerService {
 	public List<Customer> getCustomerByID(int id);
 	public void save(Customer customer);
 	public Customer findOne(int id);
+	public Customer findByUsername(String userName);
 }
