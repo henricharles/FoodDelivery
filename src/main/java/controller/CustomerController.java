@@ -22,7 +22,7 @@ import service.CustomerService;
 public class CustomerController {
 
 	@Autowired
-	private CustomerService customerService;
+	CustomerService customerService;
 
 	@RequestMapping(value = "/Add", method = RequestMethod.GET)
 	public String displayCustomerView(@ModelAttribute("newCustomer") Customer customer) {
@@ -52,7 +52,7 @@ public class CustomerController {
 		if(result1.hasErrors()) {
 			return "member";
 		}
-		customerService.createCustomerAdmin(memberToBeAdded,"ROLE_ADMIN");
+		
 		
 		return "redirect:/welcome";
 	}

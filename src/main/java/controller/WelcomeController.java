@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class WelcomeController {
 
- 	@RequestMapping({"/","/welcome"})
+ 	@RequestMapping({"/welcome"})
  	
 	public String welcome(Model model, Principal user) {
  		if (user!=null) {
