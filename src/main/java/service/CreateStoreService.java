@@ -8,6 +8,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import domain.Customer;
 
 public interface CreateStoreService {
-	public String createCustomer(  Customer customerToBeAdded, BindingResult result);
+	public String createCustomer(Customer customerToBeAdded, BindingResult result);
 
 }

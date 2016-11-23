@@ -29,7 +29,7 @@ public abstract class Person {
 	@Temporal(TemporalType.DATE)
 	private Date dateOfBirth;
 	
-	@Embedded
+	@Embedded 
 	private Address adress;
 
 	public Person(){

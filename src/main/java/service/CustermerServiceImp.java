@@ -23,7 +23,7 @@ public class CustermerServiceImp implements CustomerService {
 	@Autowired
 	CustomerDao customerdao;
 
-	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	//@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public void createCustomer(Customer customer,String r) {
 		User user = customer.getUser();
 		List<Role> roles = new ArrayList<>();
@@ -50,5 +50,14 @@ public class CustermerServiceImp implements CustomerService {
 	}
 	
 
-
+	public List<Customer> findCustomerByAddress(String city)
+	 {
+		 return customerdao.findByadressCity(city);
+	 }
+	
+	@Override
+	public Customer findOne(int id) {
+		// TODO Auto-generated method stub
+		return customerdao.findOne(id);
+	}
 }

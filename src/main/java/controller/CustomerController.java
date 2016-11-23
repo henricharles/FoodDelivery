@@ -29,7 +29,7 @@ public class CustomerController {
 		//model.addAttribute("customer", new Customer());
 		return "createCustomer";
 	}
-@org.springframework.transaction.annotation.Transactional
+//@org.springframework.transaction.annotation.Transactional
 	@RequestMapping(value = "/Signup", method = RequestMethod.POST)
 	public String createCustomer( @Valid @ModelAttribute("newCustomer") Customer customerToBeAdded, BindingResult result) {
 		if(result.hasErrors()) {
@@ -52,7 +52,7 @@ public class CustomerController {
 		if(result1.hasErrors()) {
 			return "member";
 		}
-		
+		customerService.createCustomer(memberToBeAdded,"ROLE_ADMIN");
 		
 		return "redirect:/welcome";
 	}
