@@ -12,9 +12,11 @@ public interface ProductService {
 	public List<Product> getAllProduct();
 	public Product GetSingleProduct(int id);
 	public void saveProduct(Product product);
+
 	public void DeleteProduct(int id);
 	public void AddProduct(Product p);
 	public void UpdateProduct(Product p);
 	public Category GetCategoryById(int id);
 	public List<Category> GetCategory();
+
 }

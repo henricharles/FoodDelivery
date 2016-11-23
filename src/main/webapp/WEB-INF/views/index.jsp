@@ -6,38 +6,22 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<title>Insert title here</title>
-	<link  type="text/css" href="/css/main.css" rel="stylesheet">
-	<style type="text/css">
-		.content img{
-			max-height:200px;
-		}
-		
-		li{
-			display: inline-block;
-			padding-left:20px;
-		}
-		.content>li{
-			display:inline-block;
-		}
-		li>ul>li{
-			display:block;
-		}
-		
-		.categories ul{
-			padding-top:30px;
-		}		
-	</style>
+	
+	<link  type="text/css" href="css/bootstrap.css" rel="stylesheet">
+	<link  type="text/css" href="css/main.css" rel="stylesheet">
+	<script type="text/javascript" src="../js/bootstrap.js"></script>
 </head>
 <body>	
 	<%@include file="include/header.jsp" %>
 	
 	<div class="content">
-		<ul class="categories">
+		<ul class="products">
 			<c:forEach var="category" items="${categories}">
-				<li>
-					<ul>
-						<li><a href="productList/${category.id}"><img src="images/${category.image}"/></a></li>
+				<li class="item">
+					<ul class="product-col">
+						<li><a href="productList/${category.id}"><img class="img-responsive" src="images/${category.image}"/></a></li>
 						<li><a href="productList/${category.id}">${category.name}</a></li>
+						
 					</ul>
 				</li>
 			</c:forEach>

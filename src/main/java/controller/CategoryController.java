@@ -10,14 +10,17 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.lang.*;
+import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.ServletException;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
@@ -25,8 +28,12 @@ import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -47,22 +54,14 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.io.output.*;
 
 @Controller
-public class CategoryController extends HttpServlet {
-
-	private boolean isMultipart;
-	private String filePath;
-	private File file;
-
-	public void init() {
-		// Get the file location where it would be stored.
-
-	}
+public class CategoryController{
 
 	@Autowired
 	CategoryService categoryService;
 
 	@RequestMapping("/addCategory")
-	public String addCategory() {
+	public String addCategory(Model model) {
+		model.addAttribute("category", new Category());
 		return "addCategory";
 	}
 
@@ -72,11 +71,42 @@ public class CategoryController extends HttpServlet {
 		return "Categories";
 	}
 
+	@Transactional
 	@RequestMapping(value = "/categories", method = RequestMethod.POST)
-	public String add(HttpServletRequest request, HttpServletResponse response) {
+	public String addCategoryy(@Valid @ModelAttribute("category")Category category,  BindingResult result, ModelMap model, @RequestParam MultipartFile image) throws IOException{
+		if(result.hasErrors()){
+			System.out.println(result.getAllErrors());
+			return "addCategory";
+			
+		}
+		System.out.println(category.getName()+"=========="+result.toString());
+		if(image!=null)
+			category.setImage(image.getBytes());
+		categoryService.createCategory(category);
+		return "redirect:/categories";
+		
+	}
+	
+	@Transactional
+	@RequestMapping(value ="/images/{id}", method = RequestMethod.GET)
+	public void getImageForProduct(Model model, @PathVariable("id") int id, HttpServletResponse response,HttpServletRequest request) 
+	          throws ServletException, IOException {
+		
+		System.out.println("getting image");
+		
+		Category category = categoryService.find(id);
+		System.out.println(category);
+	    response.setContentType("image/jpeg, image/jpg, image/png, image/gif");
+	    ServletOutputStream out = response.getOutputStream();
+	    out.write(category.getImage());
+	    out.close();
+}
+	
+	
+	/*public String add(HttpServletRequest request, HttpServletResponse response,Model model) {
+		List<String> errors=new ArrayList<>();
 		Category c = new Category();
 		c.setName(request.getParameter("name"));
-		System.out.println(c);
 		File file;
 		int maxFileSize = 5000 * 1024;
 		int maxMemSize = 5000 * 1024;
@@ -120,8 +150,22 @@ public class CategoryController extends HttpServlet {
 						
 					}
 				}
-				c.setName(hs.get("categoryName"));
-				categoryService.createCategory(c);
+				if(hs.get("categoryName")==null){
+					errors.add("categoryName cannot be null");
+				}
+				if(fname==null){
+					errors.add("image cannot be null");
+				}
+				model.addAttribute("error",errors);
+				if(errors.isEmpty()){
+					c.setName(hs.get("categoryName"));
+					categoryService.createCategory(c);
+				}
+				
+				else{
+					return "addCategory";
+				}
+				
 
 			} catch (Exception ex) {
 				System.out.println(ex);
@@ -131,7 +175,7 @@ public class CategoryController extends HttpServlet {
 
 		///////////////////////
 
-	}
+	}*/
 
 	@RequestMapping(value = "/fileUpload", method = RequestMethod.POST)
 	public String add(HttpServletRequest request) {

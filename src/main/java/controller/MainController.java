@@ -1,55 +1,4 @@
-//<<<<<<< HEAD
-//package controller;
-//
-//import java.util.ArrayList;
-//import java.util.List;
-//
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-//import org.springframework.stereotype.Controller;
-//import org.springframework.web.bind.annotation.RequestMapping;
-//import org.springframework.web.bind.annotation.RequestMethod;
-//import org.springframework.web.bind.annotation.ResponseBody;
-//
-//import configuration.MvcConfigure;
-//import dao.ProductDao;
-//import domain.Address;
-//import domain.Product;
-//import domain.Store;
-//import service.AdminService;
-//import service.ProductService;
-//
-//@Controller
-//public class Main {
-//	@Autowired
-//	ProductService productService;
-//	
-//	@Autowired
-//	AdminService adminService;
-////	public static void main(String args[]){
-////		//AnnotationConfigApplicationContext context=new AnnotationConfigApplicationContext(MvcConfigure.class);
-////		Main m=new Main();
-//	
-////		p.setDescription("this is product p");
-//		
-//	
-//	@RequestMapping("/home")
-//	@ResponseBody
-//	public String t()
-//	{	
-//		return "hellooooo";
-//		
-//	}
-//	
-//	@RequestMapping("/newFile")
-//	
-//	public String t1()
-//	{	
-//		return "NewFile";
-//		
-//	}
-//	
-//}
+
 package controller;
 
 import java.util.ArrayList;
@@ -64,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 //import configuration.MvcConfigure;
 import dao.ProductDao;
@@ -72,10 +22,13 @@ import domain.Product;
 import domain.Store;
 import service.AdminService;
 import service.CategoryService;
+import service.CustomerService;
+import service.OrderService;
 import service.ProductService;
 
 @Controller
-public class Main {
+@SessionAttributes("shoppingList")
+public class MainController{
 	@Autowired
 	ProductService productService;
 	
@@ -84,11 +37,21 @@ public class Main {
 	
 	@Autowired
 	AdminService adminService;
-//	public static void main(String args[]){
-//		//AnnotationConfigApplicationContext context=new AnnotationConfigApplicationContext(MvcConfigure.class);
-//		Main m=new Main();
 	
-//		p.setDescription("this is product p");
+	@Autowired
+	OrderService orderService;
+	
+	@Transactional
+	@RequestMapping(value={"/"})
+	public String home(Model model)
+	{	
+		if(!model.containsAttribute("order")) {
+	      model.addAttribute("shoppingList", new ArrayList<Product>());
+	    }
+		model.addAttribute("categories",categoryService.getAll());
+		System.out.println(categoryService.getAll().get(0).getProduct());
+		return "index";
+	}
 		
 	@Transactional
 	@RequestMapping("/index")
@@ -97,7 +60,6 @@ public class Main {
 		model.addAttribute("categories",categoryService.getAll());
 		System.out.println(categoryService.getAll().get(0).getProduct());
 		return "index";
-		
 	}
 	
 	@Transactional
@@ -108,8 +70,16 @@ public class Main {
 		System.out.println(categoryService.find(id).getProduct());
 		return "productView";
 	}
-}
-	
-	
 
+	
+	@Transactional
+	@RequestMapping(value="productList/productDetail/{id}",method=RequestMethod.GET)
+	public String productDetail(@PathVariable int id,Model model){
+		System.out.println("productDetail");
+		model.addAttribute("product",productService.GetSingleProduct(id));
+		System.out.println(productService.GetSingleProduct(id));
+		return "productDetail";
+	}
+	
+}
 

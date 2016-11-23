@@ -48,6 +48,16 @@ public class CustermerServiceImp implements CustomerService {
 	{
 		return customerdao.findAll();
 	}
+	@Override
+	public void save(Customer customer) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public Customer findOne(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 
 

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+ <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -8,20 +9,22 @@
 </head>
 <body>
  
-	<form action="categories" method="post"  enctype="multipart/form-data">
+	<form:form action="categories" method="post" enctype="multipart/form-data" commandName="category">
 		<table>
 			<tr>
 			<td>Category Name:</td>
-			<td><input type="text" name="categoryName" /> </td>
+			<td><form:input path="name" /> </td>
+			<td><form:errors path="name" cssStyle="color:red;"/></td>
 		</tr>
 		<tr>
 			<td>Choose Image:</td>
-			<td><input type="file" name="image" /> </td>
+			<td><form:input type="file" path="image"/> </td>
+			
 		</tr>
 		<tr colspan="2">
-			<td><input type="submit" value="save" name="submit"></td>
+			<td><input type="submit" value="save" /></td>
 		</tr>
 		</table>
-	</form>
+	</form:form>
 </body>
 </html>

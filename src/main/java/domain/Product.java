@@ -1,27 +1,43 @@
 
 package domain;
 
-import java.sql.Blob;
-
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.format.annotation.NumberFormat;
+import org.springframework.format.annotation.NumberFormat.Style;
+
 @Entity
 public class Product {
 	@Id @GeneratedValue
 	private int id;
-	private String name;
-	private double price;
-	@Lob
-	private Blob photo;
 	
+	@NotBlank(message="Name is required")
+	@Size(min=6, max=50, message="Name must be between 4-50 characters.")
+	private String name;
+	
+	@Min(1)
+	@NumberFormat(style= Style.NUMBER)
+	private double price;
+	
+	@NotBlank(message="Description is required.")
 	private String description;
+	
+	@Lob
+	private byte[] photo;
 	
 	@ManyToOne(cascade=CascadeType.PERSIST)
 	private Store store;
 	
+	//@NotBlank(message="Category is required.")
 	@ManyToOne(cascade=CascadeType.PERSIST)
 	private Category category;
 	
-	@ManyToOne(cascade=CascadeType.PERSIST)
+	@ManyToOne
 	private Order order;
 	
 	public Category getCategory() {
@@ -67,10 +83,10 @@ public class Product {
 	public void setPrice(double price) {
 		this.price = price;
 	}
-	public Blob getPhoto() {
+	public byte[] getPhoto() {
 		return photo;
 	}
-	public void setPhoto(Blob photo) {
+	public void setPhoto(byte[] photo) {
 		this.photo = photo;
 	}
 
